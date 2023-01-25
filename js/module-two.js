@@ -436,3 +436,271 @@ const nonExtremeEls = fruits.slice(1, fruits.length - 1);
 const lastThreeEls = fruits.slice(fruits.length - 3);
 
 console.log(firstTwoEls);
+
+// Lesson 4(2)
+const add = function (a, b) {
+    console.log(`Added`);
+    console.log(`a = ${a}`);
+    console.log(`b = ${b}`);
+    console.log(`${a} + ${b} =`, a + b);
+    return a + b;
+};
+
+// Function declaration
+add(2, 3);
+console.log(add);
+
+const add1 = add(1, 2);
+console.log(`Result:`, add1);
+
+const multiplay = function (a, b) {
+    return a * b;
+};
+
+multiplay(2, 2);
+console.log(multiplay(3, 3));
+
+// Call stack
+const FnA = function () {
+    console.log('Function A executed');
+
+    FnB();
+};
+
+const FnB = function () {
+    console.log('Function B executed');
+
+    FnC();
+};
+
+const FnC = function () {
+    console.log('Function C executed');
+}
+
+// Catch errors
+const FnD = function () {
+    console.log('Function D executed');
+
+    // console.log(value);
+
+    FnE();
+};
+
+const FnE = function () {
+    console.log('Function E executed');
+
+    FnF();
+};
+
+const FnF = function () {
+    console.log('Function F executed');
+
+    // console.log(value);
+}
+
+FnD();
+
+// Task 1. Functions
+console.log(`Task 1. Functions`);
+
+const calculateTotalPrice = function (items) {
+    console.log(items);
+    let totalPrice = 0;
+
+    for (const item of items) {
+        totalPrice += item;
+    }
+
+    return totalPrice;
+};
+
+const FnCalc = calculateTotalPrice([1, 2, 3]);
+console.log(FnCalc);
+
+console.log(calculateTotalPrice([5, 10, 15, 20]));
+console.log(calculateTotalPrice([100, 200, 300, 400, 500]));
+
+// Task 2 Functions
+console.log('Task 2 Functions');
+
+const logItems = function (items) {
+    for (const item of items) {
+        console.log(item);
+    }
+};
+
+console.log(logItems([10, 11]));
+
+// Task 3 Functions
+console.log('Task 3 Functions');
+
+const findLogin = function (allLogins, login) {
+    return allLogins.includes(login)
+        ? `User ${login} found.`
+        : `User ${login} undefound.`;
+};
+
+console.log(findLogin([
+    'Andrey', 'Ivan', 'Artiom', 'Aleksey', 'Konstantin', 'Sergey'
+], 'Aleksey'));
+
+// Task 3.1 Functions
+console.log('Task 3.1');
+const findLoginTwo = function (logins, loginToFind) {
+    for (const login of logins) {
+        if (loginToFind === login) {
+            return `User ${loginToFind} found.`;
+        }
+    }
+    return `User ${loginToFind} undefound.`;
+};
+
+console.log(findLoginTwo([
+    'Andrey', 'Ivan', 'Artiom', 'Aleksey', 'Konstantin', 'Sergey'
+], 'Aleksey'));
+
+// Task 4 Functions
+
+const findSmallesNumber = function (numbers) {
+    let minNumber = numbers[0];
+    for (let i = 1; i < numbers.length; i += 1) {
+        if (minNumber > numbers[i]) {
+            minNumber = numbers[i];
+        }
+    }
+    return minNumber;
+};
+
+console.log(findSmallesNumber([598, 389, 658, 9463, 325, 82651, 55, 687, 36, -683]));
+
+// Task 5 Function
+
+console.log('Task 5 Functions');
+
+const changeCase = function (string) {
+    const letters = string.split('');
+    console.log(letters);
+
+    let invertedString = '';
+
+    for (const letter of letters) {
+        if (letter === letter.toLowerCase()) {
+            invertedString += letter.toUpperCase();
+        } else {
+            invertedString += letter.toLowerCase();
+        }
+    }
+    return invertedString
+};
+
+console.log(changeCase('jAVAsCRIPT'));
+
+console.log('Task 5.1 Function');
+
+const changeCaseTwo = function (string) {
+    let letters = string.split('');
+    let invertedString = '';
+
+    for (const letter of letters) {
+        const isInLowerCase = letter === letter.toLowerCase();
+
+        invertedString += isInLowerCase
+            ? letter.toUpperCase()
+            : letter.toLowerCase();
+    }
+
+    return invertedString;
+};
+
+console.log(changeCaseTwo('jAVAsCRIPT'));
+
+// Task 6 Slug Functions
+console.log('Task 6 Slug Function');
+
+const slugify = function (string) {
+    const normalizedTitle = string.toLowerCase();
+    const wordsTitle = normalizedTitle.split(' ');
+    const slug = wordsTitle.join('-');
+
+    return slug;
+}
+
+console.log(slugify('Rain cats and dogs'))
+
+// arguments
+const fn = function () {
+    console.log(arguments);
+
+    const args = Array.from(arguments);
+    console.log(args);
+
+    for (const argument of arguments) {
+        console.log(argument);
+    }
+};
+
+fn();
+fn(1, 2, 3);
+fn(1, 2, 3, 4, 5);
+fn(1, 2, 3, 4, 5, 6, 7, 8);
+
+// function (...args) {}
+const fn1 = function (...args) {
+    console.log(args);
+}
+
+fn1();
+fn1(3, 2, 1);
+fn1(5, 4, 3, 2, 1);
+fn1(8, 7, 6, 5, 4, 3, 2, 1);
+
+// function (...args) {}
+const fn2 = function (a, b, c, d, ...args) {
+    console.log(`${a}, ${b}`, c, d);
+    console.log(args);
+};
+
+fn2('cat', 8, 'fish', 9, '', 1, 2, 3, 4, 5);
+
+// Task 7 ...args Functions
+console.log('Task 7 ...args Functions');
+
+const add2 = function (...args) {
+    console.log(args);
+
+    let total = 0;
+
+    for (const arg of args) {
+        total += arg;    
+    }
+
+    return total;
+};
+
+console.log(add2(1, 2, 3));
+console.log(add2(1, 2, 3, 4, 5));
+
+// Task 8 ...args Functions
+console.log('Task 8 ...args Functions');
+
+const filterNumbers = function (array, ...args) {
+    console.log(array);
+    console.log(args);
+
+    let newArray = [];
+
+    for (const item of array) {
+        console.log(item);
+
+        if (args.includes(item)) {
+            console.log(`Item ${item} is in arrays.`);
+            newArray.push(item);
+        }
+    }
+
+    return newArray;
+}
+
+console.log(filterNumbers([1, 2, 3, 4, 5], 10, 15, 2, 3, 8));
+console.log(filterNumbers([10, 15, 25, 30], 23, 30, 18, 15));
+console.log(filterNumbers([100, 200, 300, 400, 500], 7, 12, 200, 64));
